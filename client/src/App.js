@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-// import Header from "./components/Header";
+import Navbar from "./components/Navbar";
 import Wrapper from "./components/Wrapper";
 
 // import NoMatch from "./pages/NoMatch";
-import Home from "./pages/Home";
-import Favorites from "./pages/Favorites";
+// import Home from "./pages/Home";
+// import Favorites from "./pages/Favorites";
 
 class App extends Component {
  
@@ -13,10 +13,10 @@ class App extends Component {
     return (
       <Router>
         <div>
-          {/* <Header /> */}
+          <Navbar />
           <Wrapper>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/favorites" component={Favorites} />
+            {/* <Route exact path="/" component={Home} /> */}
+            {/* <Route exact path="/favorites" component={Favorites} /> */}
             {/* <Route exact path="/noMatch" component={NoMatch} /> */}
           </Wrapper>
         </div>
