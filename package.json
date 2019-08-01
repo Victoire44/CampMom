@@ -20,9 +20,13 @@
     "nodemon": "^1.18.7"
   },
   "dependencies": {
+    "@material-ui/core": "^4.3.0",
+    "@material-ui/icons": "^4.2.1",
+    "autosuggest-highlight": "^3.1.1",
     "axios": "^0.19.0",
     "express": "^4.16.3",
     "if-env": "^1.0.4",
-    "mongoose": "^5.6.7"
+    "mongoose": "^5.6.7",
+    "react-autosuggest": "^9.4.3"
   }
 }
