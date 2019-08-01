@@ -161,7 +161,7 @@ export default function SearchInput() {
           classes,
           id: 'react-autosuggest-simple',
           label: 'National Parks',
-          placeholder: 'Search for a national park to get campsite results...',
+          placeholder: 'Search for a national park for camping information...',
           value: state.single,
           onChange: handleChange('single'),
         }}

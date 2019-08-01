@@ -3,15 +3,14 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import SearchInput from '../SearchInput';
 import './style.css';
+import logo from '../Header/logo.png';
 
 class Header extends Component {
     render() {
         return (
             <div id="j-container">
                 <Paper id="jumbotron">
-                    <Typography id="title" variant="h2" component="h3">
-                        Camp.Mom
-                    </Typography>
+                <img id="logo" src={logo} />
                     <SearchInput/>
                 </Paper>
             </div>
