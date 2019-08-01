@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import Wrapper from "./components/Wrapper";
 
 // import NoMatch from "./pages/NoMatch";
-// import Home from "./pages/Home";
+import Home from "./pages/Home";
 // import Favorites from "./pages/Favorites";
 
 class App extends Component {
@@ -15,7 +15,7 @@ class App extends Component {
         <div>
           <Navbar />
           <Wrapper>
-            {/* <Route exact path="/" component={Home} /> */}
+            <Route exact path="/" component={Home} />
             {/* <Route exact path="/favorites" component={Favorites} /> */}
             {/* <Route exact path="/noMatch" component={NoMatch} /> */}
           </Wrapper>
