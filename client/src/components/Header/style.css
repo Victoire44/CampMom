@@ -1,0 +1,48 @@
+#j-container {
+    background-image: url("https://images.wallpaperscraft.com/image/bonfire_fire_camping_121785_2560x1080.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#jumbotron {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: none;
+    width: 60%;
+}
+
+#title {
+    color: white;
+    padding: 100px 0 40px 0;
+}
+
+.makeStyles-root-112 {
+    width: 90%;
+    padding: 5px 20px 10px 20px;
+    height: 50px !important;
+    background: rgba(0, 0, 0, 0.75);
+    border-radius: 15px;
+    margin-bottom: 125px;
+}
+
+.MuiFormLabel-root {
+    color: white;
+}
+
+.MuiPaper-elevation1 {
+    box-shadow: none !important;
+}
+
+input#react-autosuggest-simple {
+    color: white !important;
+}
+label.MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated {
+    color: white;
+}
+
+.MuiInput-underline:before {
+    border-bottom: 2px solid #303f9f !important;
+}
