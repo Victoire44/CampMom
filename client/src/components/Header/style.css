@@ -12,6 +12,7 @@
     align-items: center;
     background: none;
     width: 60%;
+    box-shadow: none !important;
 }
 
 #title {
@@ -30,10 +31,6 @@
 
 .MuiFormLabel-root {
     color: white;
-}
-
-.MuiPaper-elevation1 {
-    box-shadow: none !important;
 }
 
 input#react-autosuggest-simple {
