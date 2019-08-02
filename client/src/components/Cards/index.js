@@ -18,13 +18,14 @@ function MapCard(props) {
             <Marker position={{ lat: 39.833333, lng: -98.583333 }} />
         </GoogleMap>
     ));
-
+        
     return (
         <Container maxWidth="md" style={{ marginTop: 70 }}>
             <Grid container justify="center" spacing={7}>
                 {console.log(props.campgrounds)}
                 {props.campgrounds.map(campground => (
                     <Grid key={campground.name} item xs={12} md={4}>
+                        {/* {console.log(campgrounds)} */}
                         <Card>
                             <div style={{ height: 200 }}>
                                 <Map
@@ -38,7 +39,7 @@ function MapCard(props) {
                                         {campground.name}
                                     </Typography>
                                     <Typography variant="body2" color="textSecondary" component="p">
-                                        {campground.description}
+                                        {/* {campground.description} */}
                                     </Typography>
                                 </CardContent>
                             </CardActionArea>
