@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Header from "./components/Header";
 import Wrapper from "./components/Wrapper";
+import Footer from "./components/Footer"
 
 // import NoMatch from "./pages/NoMatch";
 import Home from "./pages/Home";
@@ -28,6 +29,7 @@ class App extends Component {
             {/* <Route exact path="/favorites" component={Favorites} /> */}
             {/* <Route exact path="/noMatch" component={NoMatch} /> */}
           </Wrapper>
+          <Footer />
         </div>
       </Router>
     )
