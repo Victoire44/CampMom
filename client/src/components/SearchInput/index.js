@@ -154,7 +154,6 @@ export default function SearchInput(props) {
     }
   };
 
-
   const autosuggestProps = {
     renderInputComponent,
     suggestions: stateSuggestions,
