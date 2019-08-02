@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
 import SearchInput from '../SearchInput';
 import './style.css';
 import logo from '../Header/logo.png';
@@ -11,12 +10,11 @@ class Header extends Component {
             <div id="j-container">
                 <Paper id="jumbotron">
                 <img id="logo" src={logo} />
-                    <SearchInput/>
+                    <SearchInput handleCampgrounds={this.props.handleCampgrounds}/>
                 </Paper>
             </div>
         );
     };
 };
-
 
 export default Header;
