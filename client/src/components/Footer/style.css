@@ -1,0 +1,26 @@
+.footer {
+    min-height: 100px;
+    background: #E5E5E5;
+    position: relative;
+    left: 0;
+    bottom: -100px;
+    width: 100%;
+    background-color:#3F52B5;
+    color: white;
+    text-align: center;
+}
+
+.footer #logo {
+  width: 100px;
+  padding-top: 10px;
+}
+  
+  .footer span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 3px;
+    background-color:rgba(63, 83, 181, 0.8);
+    filter: brightness(75%)
+  }
