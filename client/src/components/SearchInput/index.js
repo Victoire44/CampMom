@@ -144,10 +144,14 @@ export default function SearchInput(props) {
       ...state,
       [name]: newValue,
     });
+  };
 
-    API.getCampground(newValue)
-      .then(res => props.handleCampgrounds(res.data.data))
-      .catch(err => console.error(err));
+  const handleEnter = (event) => {
+    if(event.key === 'Enter') {
+      API.getCampground(state.single)
+        .then(res => props.handleCampgrounds(res.data.data))
+        .catch(err => console.error(err));
+    }
   };
 
 
@@ -171,6 +175,7 @@ export default function SearchInput(props) {
           placeholder: 'Search for a national park for camping information...',
           value: state.single,
           onChange: handleChange('single'),
+          onKeyDown: handleEnter,
         }}
         theme={{
           container: classes.container,
