@@ -25,7 +25,7 @@ function MapCard(props) {
             <Grid container justify="center" spacing={7}>
                 {props.campgrounds.map(campground => {
                     var latLongString = campground.latLong;
-                    var regex = /[\d\.-]+/g;
+                    var regex = /[\d.-]+/g;
                     var latLong = latLongString.match(regex);
                     var position = latLong != null ? { lat: parseFloat(latLong[0]), lng: parseFloat(latLong[1]) } : null
 
