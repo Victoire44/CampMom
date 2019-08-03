@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+- '12'
+branches:
+  only: 
+  - master
+cache:
+  directories:
+  - node_modules
+  - client/node_modules
+install:
+- npm install
+script:
+- npm run build
+deploy:
+  provider: heroku
+  api_key:
+    secure: cbnEStumVXMY3PCswQtsXuAdNsUpy1ZcOVIb3IASPL61lN1ZTKN9kOhb6GY3FiDvn5GtBOjINNeOO6O6+IhG4FbrX6CopmoSm3gCLw1CuqcL93alyTmbIJvXD2+zvSdVvj0l9MMReh/1V18/q0FLNHKkPU6CbgBssxoh6xSsdyw/XQjRYNDWle0dAWGGgpRmyFAZiPXOYRBKp6znkCHcWVwz68/sgWXTGp8uPg1LklLTO1mHCTKvKKdwV2+nH4iLOjAYDnYLhXrmyJBgkPLIcUnqxvotcL25293zrzuuK8ivfvfgcQYiGVvVaGhamCu6D9WWMJ7y5w9V1KW47WoJMt8/FN7nP67jR5nkJCa+f0SBgOSL6GOF89a9R+E9M7mQD1ZIovRXDj50LEbXH6w8KprSObPIdcvpbt3RRacB+0qkviVoeXCFsOkud6fYYDitu/O3nd7XuA+AIeKjCdokrqihH0Wvph+7tfyQ+AW840UoUprGIXbT6/fDA4b5cJ2RQY/vCn0Pj0MX91t8PYRuvRX0wzCJXLnb5iF9cPtbl+oPHBZFabgwThxmWi8MhJUdfbTw5TofWkd+2+KHPD4CAnxDxBbWseaZRJL6HkQFH2lueabsDax9/2YsCdK9EHA1ejHLNIocx64x/quzD1aBfxwpLE6XrLw8bR14JU/UmMs=
+  app: campmom
+  on: master

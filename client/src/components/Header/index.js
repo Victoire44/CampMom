@@ -9,7 +9,7 @@ class Header extends Component {
         return (
             <div id="j-container">
                 <Paper id="jumbotron">
-                <img id="logo" src={logo} />
+                <img id="logo" src={logo} alt="CampMom" />
                     <SearchInput handleCampgrounds={this.props.handleCampgrounds}/>
                 </Paper>
             </div>
