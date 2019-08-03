@@ -7,7 +7,9 @@ import Typography from '@material-ui/core/Typography';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
+import Button from '@material-ui/core/Button';
 import MyModal from "../Modal"
+import API from '../../utils/API'
 
 
 function MapCard(props) {
@@ -44,13 +46,13 @@ function MapCard(props) {
                                         <Typography gutterBottom variant="h5" component="h2">
                                             {campground.name}
                                         </Typography>
-                                        <Typography variant="body2" color="textSecondary" component="p">
-
-                                        </Typography>
                                     </CardContent>
                                 </CardActionArea>
-                                <CardActions>
-                                    <MyModal campground={campground}/>
+                                <CardActions >
+                                    <MyModal campground={campground} />
+                                    <Button onClick={() => API.saveFavorite(campground.id)}>
+                                        <i className="material-icons">star_border</i>
+                                    </Button>
                                 </CardActions>
                             </Card>
                         </Grid>
