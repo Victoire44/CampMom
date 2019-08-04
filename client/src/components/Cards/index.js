@@ -50,7 +50,7 @@ function MapCard(props) {
                                     </CardContent>
                                 </CardActionArea>
                                 <CardActions>
-                                    <MyModal />
+                                    <MyModal campground={campground}/>
                                 </CardActions>
                             </Card>
                         </Grid>
