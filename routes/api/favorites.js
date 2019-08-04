@@ -8,8 +8,6 @@ router.route("")
 
 // Matches with "/api/favorites/:id"
 router.route("/:id")
-//   .get(favoritesController.findById)
-  .put(favoritesController.update)
   .delete(favoritesController.remove);
 
 module.exports = router;
