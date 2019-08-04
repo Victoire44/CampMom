@@ -10,11 +10,11 @@ import "./style.css";
 const useStyles = makeStyles(theme => ({
     root: {
         padding: theme.spacing(8, 5),
-        margin: theme.spacing(30, 0)
+        // margin: theme.spacing(30, 0)
     },
 }));
 
-function MyModal() {
+function MyModal(props) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
 
@@ -27,7 +27,7 @@ function MyModal() {
     };
     return (
         <div>
-            <Button onClick={handleOpen} size="small" color="primary">Learn More</Button>
+            <Button onClick={handleOpen} size="small" color="primary">Details</Button>
             <Modal
                 aria-labelledby="simple-modal-title"
                 aria-describedby="simple-modal-description"
@@ -36,11 +36,28 @@ function MyModal() {
             >
                 <Container maxWidth="md" className="modal">
                     <Paper className={classes.root}>
-                        <Typography variant="h5" component="h3">
-                            This is a sheet of paper.
+                        <Typography variant="h3" component="h3">
+                            {props.campground.name}
                         </Typography>
+                        <br />
                         <Typography component="p">
-                            Paper can be used to build surface or other elements for your application.
+                            {props.campground.description}
+                        </Typography>
+                        <br />
+                        <Typography component="p">
+                            {props.campground.directionsoverview}
+                        </Typography>
+                        <br />
+                        <Typography component="p">
+                            {props.campground.accessibility.adainfo}
+                        </Typography>
+                        <br />
+                        <Typography component="p">
+                            {props.campground.accessibility.firestovepolicy}
+                        </Typography>
+                        <br />
+                        <Typography component="p">
+                            {props.campground.weatheroverview}
                         </Typography>
                     </Paper>
                 </Container>
