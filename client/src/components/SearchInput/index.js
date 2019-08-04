@@ -148,8 +148,12 @@ export default function SearchInput(props) {
 
   const handleEnter = (event) => {
     if(event.key === 'Enter') {
+      props.handleLoading(true)
       API.getCampground(state.single)
-        .then(res => props.handleCampgrounds(res.data.data))
+        .then(res => {
+          props.handleCampgrounds(res.data.data)
+          props.handleLoading(false)
+        })
         .catch(err => console.error(err));
     }
   };

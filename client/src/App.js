@@ -12,20 +12,24 @@ import Home from "./pages/Home";
 class App extends Component {
 
   state = {
-      campgrounds: [],
+    campgrounds: [],
+    loading: false
   }
 
   handleCampgrounds = campgrounds =>
     this.setState({ campgrounds: campgrounds })
+
+  handleLoading = loading =>
+    this.setState({ loading: loading })
 
   render() {
     return (
       <Router>
         <div>
           <Navbar />
-          <Header handleCampgrounds={this.handleCampgrounds} />
+          <Header handleCampgrounds={this.handleCampgrounds} handleLoading={this.handleLoading} />
           <Wrapper>
-            <Route exact path="/" render={props => <Home {...props} campgrounds={this.state.campgrounds} />} />
+            <Route exact path="/" render={props => <Home {...props} campgrounds={this.state.campgrounds} loading={this.state.loading} />} />
             {/* <Route exact path="/favorites" component={Favorites} /> */}
             {/* <Route exact path="/noMatch" component={NoMatch} /> */}
           </Wrapper>

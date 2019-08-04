@@ -27,9 +27,9 @@
     "express": "^4.17.1",
     "express-fileupload": "^1.1.5",
     "if-env": "^1.0.4",
-    "mongoose": "^5.6.7",
     "mysql2": "^1.6.5",
-    "react-autosuggest": "^9.4.3",
-    "sequelize": "^5.12.2"
+    "sequelize": "^5.12.2",
+    "material-ui": "^1.0.0-beta.47",
+    "react-autosuggest": "^9.4.3"
   }
 }
