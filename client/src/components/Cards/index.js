@@ -69,7 +69,7 @@ function MapCard(props) {
                                             </CardContent>
                                         </CardActionArea>
                                         <div style={{ flex: 1 }}></div>
-                                        <i className="material-icons" onClick={() => API.saveFavorite(campground.id)}>star_border</i>
+                                        <i className="material-icons" onClick={() => API.saveFavorite(campground.parkCode, campground.id)}>star_border</i>
                                         <CardActions style={{ margin: "0 auto" }}>
                                             <MyModal campground={campground} />
                                         </CardActions>
