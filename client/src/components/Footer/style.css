@@ -5,7 +5,7 @@
     left: 0;
     bottom: -100px;
     width: 100%;
-    background-color:#3F52B5;
+    background-color: #225c5e;
     color: white;
     text-align: center;
 }
@@ -21,6 +21,7 @@
     left: 0;
     right: 0;
     padding: 3px;
-    background-color:rgba(63, 83, 181, 0.8);
-    filter: brightness(75%)
+    background-color: #2d5959;
+    filter: brightness(75%);
+    font-family: "Roboto, sans-serif";
   }

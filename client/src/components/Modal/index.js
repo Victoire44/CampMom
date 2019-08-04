@@ -5,12 +5,17 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
+
 import "./style.css";
 
 const useStyles = makeStyles(theme => ({
     root: {
         padding: theme.spacing(8, 5),
         // margin: theme.spacing(30, 0)
+    },
+    button: {
+        background: "#9D2F16",
+        color: "white",
     },
 }));
 
@@ -27,7 +32,10 @@ function MyModal(props) {
     };
     return (
         <div>
-            <Button onClick={handleOpen} size="small" color="primary">Details</Button>
+            <Button onClick={handleOpen} size="small" variant="contained" className={classes.button} buttonStyle={{ borderRadius: 25 }}
+                style={{ borderRadius: 25 }}>Learn More
+                </Button>
+
             <Modal
                 aria-labelledby="simple-modal-title"
                 aria-describedby="simple-modal-description"
