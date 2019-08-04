@@ -1,8 +1,8 @@
+const db = require("./db/models")
 const express = require("express");
-// const mongoose = require("mongoose");
 const routes = require("./routes");
 
-const PORT = process.env.PORT || 3306;
+const PORT = process.env.PORT || 3001;
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
@@ -16,6 +16,10 @@ if (process.env.NODE_ENV === "production") {
 // Define API routes
 app.use(routes)
 
-app.listen(PORT, () => {
-  console.log(`API server now on port ${PORT}!`);
-});
+// Starts the server to begin listening and sync sequelize models
+// =============================================================
+db.sequelize.sync().then(() => {
+  app.listen(PORT, function () {
+    console.log(`App listening on PORT ${PORT}`);
+  });
+})
