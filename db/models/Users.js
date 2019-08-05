@@ -12,22 +12,22 @@ module.exports= function(sequelize, DataTypes) {
             type: DataTypes.UUID,
             allowNull: false
         },
-        password: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        trips: {
+        trips: [
+            {
             type: DataTypes.STRING,
             allowNull: false
-        },
+        }
+    ],
         invitedTo: {
             type: DataTypes.TEXT,
             allowNull: false
         },
-        favs: {
+        favs: [
+            {
             type: DataTypes.STRING,
             allowNull: true
         }
+    ]
     });
     User.associate = function(models) {
 
