@@ -12,7 +12,6 @@ module.exports= function(sequelize, DataTypes) {
             type: DataTypes.UUID,
             allowNull: false
         },
-        //firebase will handle password
         trips: [
             {
             type: DataTypes.STRING,
