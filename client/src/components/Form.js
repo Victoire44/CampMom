@@ -9,7 +9,9 @@ import withFirebaseAuth from 'react-with-firebase-auth'
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import firebaseConfig from '../firebaseConfig';
+import Axios from 'axios';
 // import withStyles
+// var $ = require("jQuery")
 
 
 
@@ -30,6 +32,9 @@ const providers = {
 //     })
 // })
 
+// var email = {},
+// var 
+
 firebaseAppAuth.onAuthStateChanged(function (user) {
 
     console.log("Auth state change noted", user);
@@ -39,7 +44,18 @@ firebaseAppAuth.onAuthStateChanged(function (user) {
       // log user info to the console
       console.log("user is signed in!");
       console.log("USER: ", user);  
+      console.log (user.displayName)
+      console.log (user.email)
+      console.log(user.uid)
 
+      Axios.post("/api/createusers",
+        {
+            name: user.displayName,
+            email: user.email,
+            uuid: user.uid
+        }).then(function (data, status) {
+            alert("Data: " + data + "\nStatus: " + status);
+        });
     
 
       // access logged in user's data
@@ -113,6 +129,7 @@ class Inputs extends React.Component {
                             ? <p>Hello, {user.displayName}</p>
                             : <p>Please sign in.</p>
                     }
+                    <div className ="g-signin2" data-onsuccess="onSignIn"></div>
                     {
                         user
                             ? <button variant="contained" color="primary" className={classes.button} onClick={signOut}>Sign out</button>

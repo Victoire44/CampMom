@@ -1,9 +1,48 @@
 import axios from "axios";
 
+/**
+ * Get the campgrounds by id.
+ * 
+ * A comma delimited list of park codes (each 4-10 characters in length).
+ */
+function getCampgroundById(parkCode) {
+    return axios
+        .get(`https://developer.nps.gov/api/v1/campgrounds?parkCode=${parkCode}&api_key=O4VdhmolNStlPLj2bo2DfPKWks3F8J9xfihpGqTf`)
+        .then(result => result.data);
+}
 
-// module.exports= {
-    // add new user 
-    // saveUser: function(userData) {
-    //     reutrn axios.post("/user", userData);
-    // }
-// }
+export default {
+    // National park Service data
+    getCampground: function (query) {
+        return axios.get(`https://developer.nps.gov/api/v1/campgrounds?q=${query}&api_key=O4VdhmolNStlPLj2bo2DfPKWks3F8J9xfihpGqTf`);
+    },
+    // OpenWeather data
+    getWeather: function (lat, lon, cnt) {
+        return axios.get(`api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=${cnt}`)
+    },
+    //Trails data api
+    getTrails: function (lat, lon) {
+        return axios.get(`https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lon}&maxDistance=10&key=200542336-9cc42e1d5b620d5f44636b1bd9dc58f3`);
+    },
+
+
+    // Save Favorites
+    // Deletes the favorite with the given id
+    deleteFavorite: function (id) {
+        return axios.delete("/api/favorites/" + id);
+    },
+    // Saves a favorite to the database
+    saveFavorite: function (parkCode, id) {
+        return axios.post("/api/favorites", { parkCode: parkCode, id: id });
+    },
+    // Get the saved favorite from the database
+    getFavorites: function () {
+        return axios.get("/api/favorites").then(favorites => {
+            const campgroundPromises = favorites.data.map(favorite => {
+                return getCampgroundById(favorite.parkCode)
+                    .then(result => result.data.find(campground => campground.id === favorite.campgroundId))
+            });
+            return Promise.all(campgroundPromises)
+        })
+    }
+};

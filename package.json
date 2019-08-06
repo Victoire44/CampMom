@@ -27,7 +27,12 @@
     "express": "^4.16.3",
     "firebase": "^6.3.4",
     "if-env": "^1.0.4",
+    "jQuery": "^1.7.4",
+    "jquery": "^3.4.1",
     "mongoose": "^5.6.7",
-    "react-with-firebase-auth": "^1.0.3"
+    "mysql2": "^1.6.5",
+    "path": "^0.12.7",
+    "react-with-firebase-auth": "^1.0.3",
+    "sequelize": "^5.12.3"
   }
 }

@@ -97,7 +97,7 @@ function Navbar() {
                 className="mod-log"
             >
                 <div style={modalStyle} className={classes.paper}>
-                    <h2 id="modal-title">Sign Up</h2>
+                    <h2 id="modal-title">Sign In</h2>
 
                     <Form>
 
