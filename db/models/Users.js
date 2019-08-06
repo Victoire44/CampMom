@@ -18,11 +18,11 @@ module.exports= function(sequelize, DataTypes) {
         },
         trips: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         invitedTo: {
             type: DataTypes.TEXT,
-            allowNull: false
+            allowNull: true
         },
         favs: {
             type: DataTypes.STRING,

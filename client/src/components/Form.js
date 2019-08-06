@@ -48,7 +48,7 @@ firebaseAppAuth.onAuthStateChanged(function (user) {
       console.log (user.email)
       console.log(user.uid)
 
-      Axios.post("/api/createusers",
+      Axios.post("https://localhost:3001/api/createusers",
         {
             name: user.displayName,
             email: user.email,
