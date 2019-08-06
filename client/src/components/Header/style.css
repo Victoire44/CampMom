@@ -15,12 +15,7 @@
     box-shadow: none !important;
 }
 
-#title {
-    color: white;
-    padding: 100px 0 40px 0;
-}
-
-.makeStyles-root-112 {
+.makeStyles-root-113 {
     width: 90%;
     padding: 5px 20px 10px 20px;
     height: 50px !important;
@@ -41,7 +36,11 @@ label.MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLab
 }
 
 .MuiInput-underline:before {
-    border-bottom: 2px solid #303f9f !important;
+    border-bottom: 2px solid #9D2F17 !important;
+}
+
+.MuiInput-underline:after {
+    border-bottom: 2px solid #9D2F17 !important;
 }
 
 .makeStyles-suggestionsContainerOpen-114 {
@@ -52,3 +51,11 @@ label.MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLab
     max-width: 300px;
     padding: 50px 0 30px 0;
 }
+
+/* .MuiLinearProgress-colorSecondary {
+    background-color: rgb(0, 0, 0) !important;
+}
+
+.MuiLinearProgress-barColorSecondary {
+    background-color: rgb(198, 61, 30) !important;
+} */

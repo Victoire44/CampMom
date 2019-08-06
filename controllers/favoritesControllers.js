@@ -8,14 +8,16 @@ module.exports = {
                 userId: "userId", // TODO: Get the user from the auth
             }
         }).then(function (favorites) {
-            console.log(favorites)
-            res.json([])
+            res.json(favorites.map(favorite => {
+                return { parkCode: favorite.parkCode, campgroundId: favorite.campgroundId }
+            }))
         });
     },
     create: function (req, res) {
         console.log(`Creating favorite ${req.body.id}`)
         db.Favorites.create({
             userId: "userId", // TODO: Provide the auth user here
+            parkCode: req.body.parkCode,
             campgroundId: req.body.id
         })
             .then(function (response) {

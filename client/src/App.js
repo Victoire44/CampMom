@@ -7,7 +7,7 @@ import Footer from "./components/Footer"
 
 // import NoMatch from "./pages/NoMatch";
 import Home from "./pages/Home";
-// import Favorites from "./pages/Favorites";
+import Favorites from "./pages/Favorites";
 
 class App extends Component {
 
@@ -30,7 +30,7 @@ class App extends Component {
           <Header handleCampgrounds={this.handleCampgrounds} handleLoading={this.handleLoading} />
           <Wrapper>
             <Route exact path="/" render={props => <Home {...props} campgrounds={this.state.campgrounds} loading={this.state.loading} />} />
-            {/* <Route exact path="/favorites" component={Favorites} /> */}
+            <Route exact path="/favorites" component={Favorites} />
             {/* <Route exact path="/noMatch" component={NoMatch} /> */}
           </Wrapper>
           <Footer />

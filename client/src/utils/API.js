@@ -1,5 +1,16 @@
 import axios from "axios";
 
+/**
+ * Get the campgrounds by id.
+ * 
+ * A comma delimited list of park codes (each 4-10 characters in length).
+ */
+function getCampgroundById(parkCode) {
+    return axios
+        .get(`https://developer.nps.gov/api/v1/campgrounds?parkCode=${parkCode}&api_key=O4VdhmolNStlPLj2bo2DfPKWks3F8J9xfihpGqTf`)
+        .then(result => result.data);
+}
+
 export default {
     // National park Service data
     getCampground: function (query) {
@@ -17,12 +28,17 @@ export default {
         return axios.delete("/api/favorites/" + id);
     },
     // Saves a favorite to the database
-    saveFavorite: function (id) {
-        return axios.post("/api/favorites", {id: id});
+    saveFavorite: function (parkCode, id) {
+        return axios.post("/api/favorites", { parkCode: parkCode, id: id });
     },
     // Get the saved favorite from the database
-    savedFavorite: function () {
-        return axios.get("/api/favorites");
+    getFavorites: function () {
+        return axios.get("/api/favorites").then(favorites => {
+            const campgroundPromises = favorites.data.map(favorite => {
+                return getCampgroundById(favorite.parkCode)
+                    .then(result => result.data.find(campground => campground.id === favorite.campgroundId))
+            });
+            return Promise.all(campgroundPromises)
+        })
     }
 };
-
