@@ -33,11 +33,16 @@ export default {
     },
     // Get the saved favorite from the database
     getFavorites: function () {
-        return axios.get("/api/favorites").then(favorites => {
-            const campgroundPromises = favorites.data.map(favorite => {
+        return axios.get("/api/favorites").then(result => result.data)
+    },
+    // Get the saved favorite enriched (name, description...) from NPS data
+    getFavoriteCampgrounds: function () {
+        return this.getFavorites().then(favorites => {
+            const campgroundPromises = favorites.map(favorite => {
                 return getCampgroundById(favorite.parkCode)
                     .then(result => result.data.find(campground => campground.id === favorite.campgroundId))
             });
+            //Go from array of promises to a promise of array of results
             return Promise.all(campgroundPromises)
         })
     }

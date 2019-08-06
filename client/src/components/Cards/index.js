@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -6,7 +6,6 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
 import MyModal from "../Modal"
 import API from '../../utils/API'
@@ -38,10 +37,35 @@ function MapCard(props) {
         </GoogleMap>
     ));
 
+    const [favorites, setFavorites] = useState([])
+
+    useEffect(() => {
+        API.getFavorites()
+            .then(favorites => setFavorites(favorites))
+            .catch(err => console.error(err));
+    }, []);
+
+    const handleFavorite = (parkCode, id) => {
+        if (favorites.map(favorite => favorite.campgroundId).includes(id)) {
+            API.deleteFavorite(id)
+                .then(() => setFavorites(favorites.filter(favorite => favorite.campgroundId !== id)))
+                .catch(err => console.error(err));
+        } else {
+            API.saveFavorite(parkCode, id)
+                .then(() => setFavorites(favorites.concat([
+                    {
+                        parkCode: parkCode,
+                        campgroundId: id
+                    }
+                ])))
+                .catch(err => console.error(err));
+        }
+    }
+
     return (
-        <Container maxWidth="md" style={{ marginTop: 70 }}>
+        <div>
             {props.campgrounds.length === 0 ?
-                (<h1 className={classes.noResults}>No results</h1>
+                (<h1 className={classes.noResults}>Looks like there is no campground here</h1>
                 ) : (
                     <Grid container justify="center" spacing={7}>
                         {props.campgrounds.map(campground => {
@@ -69,7 +93,10 @@ function MapCard(props) {
                                             </CardContent>
                                         </CardActionArea>
                                         <div style={{ flex: 1 }}></div>
-                                        <i className="material-icons" onClick={() => API.saveFavorite(campground.parkCode, campground.id)}>star_border</i>
+                                        {console.log(favorites)}
+                                        <i className="material-icons" style={{cursor: "pointer"}} onClick={() => handleFavorite(campground.parkCode, campground.id)}>
+                                            {favorites.map(favorite => favorite.campgroundId).includes(campground.id) ? "star" : "star_border"}
+                                        </i>
                                         <CardActions style={{ margin: "0 auto" }}>
                                             <MyModal campground={campground} />
                                         </CardActions>
@@ -79,7 +106,7 @@ function MapCard(props) {
                         })}
                     </Grid>
                 )}
-        </Container>
+        </div>
     );
 }
 

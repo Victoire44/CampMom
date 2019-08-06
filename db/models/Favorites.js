@@ -9,7 +9,7 @@ module.exports = function (sequelize, DataTypes) {
         {
             indexes: [
                 {
-                    fields: ["parkCode", "campgroundId", "userId"],
+                    fields: ["campgroundId", "userId"],
                     unique: true // Force uniqueness on the combination of campgroundId and userId
                 }
             ]
