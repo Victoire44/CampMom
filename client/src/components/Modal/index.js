@@ -108,7 +108,7 @@ function MyModal(props) {
                                             {trails.map(trail => (
                                                 <div>
                                                     <h3> {trail.name}</h3>
-                                                    <img src={trail.imgSmall} alt="trail"></img>
+                                                    <img src={trail.imgSmallMed} alt="trail"></img>
                                                     <p> Difficulty: {trail.difficulty}</p>
                                                     <p> Type: {trail.type}</p>
                                                     <p> Description: {trail.summary} </p>
