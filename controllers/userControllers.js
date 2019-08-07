@@ -7,7 +7,7 @@ module.exports = {
     create: function (req, res) {
         console.log(`Creating User ${req.body.id}`)
         console.log(req.body);
-        db.Users.create({
+        db.User.create({
             uuid: req.body.uuid, // TODO: Provide the auth user here
             name: req.body.name,
             email: req.body.email
