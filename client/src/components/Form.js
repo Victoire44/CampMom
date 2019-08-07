@@ -1,10 +1,10 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+//import { Redirect } from 'react-router-dom';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import Input from '@material-ui/core/Input';
-import Button from '@material-ui/core/Button';
+//import Input from '@material-ui/core/Input';
+//import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import { FirebaseDatabaseProvider } from "@react-firebase/database";
+//import { FirebaseDatabaseProvider } from "@react-firebase/database";
 import withFirebaseAuth from 'react-with-firebase-auth'
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
