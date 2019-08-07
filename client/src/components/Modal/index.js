@@ -99,7 +99,7 @@ function MyModal(props) {
                             <Typography component="p">
                                 {props.campground.weatheroverview}
                             </Typography>
-                            <Typography>
+                            <Typography style={{ textAlign: "center" }}>
                                 {/* we map each trail in the array trails  */}
                                 {trails.length === 0 ? (<div></div>
                                 ) : (
