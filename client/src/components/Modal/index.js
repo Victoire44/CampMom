@@ -109,7 +109,7 @@ function MyModal(props) {
                                                 <div>
                                                     <h3> {trail.name}</h3>
                                                     <img src={trail.imgSmallMed} alt="trail"></img>
-                                                    <p> Difficulty: {trail.difficulty}</p>
+                                                    <p><strong>Rating:</strong> {trail.stars}</p>
                                                     <p> Type: {trail.type}</p>
                                                     <p> Description: {trail.summary} </p>
 
