@@ -110,8 +110,8 @@ function MyModal(props) {
                                                     <h3> {trail.name}</h3>
                                                     <img src={trail.imgSmallMed} alt="trail"></img>
                                                     <p><strong>Rating:</strong> {trail.stars}</p>
-                                                    <p> Type: {trail.type}</p>
-                                                    <p> Description: {trail.summary} </p>
+                                                    <p><strong>Length:</strong> {trail.length}</p>
+                                                    <p><strong>Description:</strong> {trail.summary}</p>
 
                                                     <Button size="small" variant="contained" className={classes.button} buttonStyle={{ borderRadius: 25 }}
                                                         style={{ borderRadius: 25 }}><a className={classes.trailLink} href={trail.url} target="_blank" rel="noopener noreferrer" style={{color: "white"}}> Learn More </a>
