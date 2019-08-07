@@ -48,15 +48,20 @@ firebaseAppAuth.onAuthStateChanged(function (user) {
       console.log (user.email)
       console.log(user.uid)
 
-      Axios.post("https://localhost:3001/api/createusers",
+      Axios.post("/api/createusers",
         {
             name: user.displayName,
             email: user.email,
             uuid: user.uid
         }).then(function (data, status) {
-            alert("Data: " + data + "\nStatus: " + status);
+            // alert("Data: " + data + "\nStatus: " + status);
         });
     
+        if (user.emailVerified) {
+            this.setState({
+                isLoggedIn: true
+            })
+        }
 
       // access logged in user's data
     //   database.ref("/" + user.uid).once("value").then(function (snapshot) {
