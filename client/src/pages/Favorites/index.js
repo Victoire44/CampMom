@@ -1,7 +1,7 @@
 import React from "react";
 import API from "../../utils/API";
 import Cards from "../../components/Cards"
-
+import Container from '@material-ui/core/Container';
 
 class Favorites extends React.Component {
     state = {
@@ -9,7 +9,7 @@ class Favorites extends React.Component {
     }
 
     componentDidMount = () => {
-        API.getFavorites().then(campgrounds => {
+        API.getFavoriteCampgrounds().then(campgrounds => {
             console.log(campgrounds)
             this.setState({campgrounds: campgrounds})
         })
@@ -17,9 +17,10 @@ class Favorites extends React.Component {
 
     render() {
         return (
-            <div>
+            <Container maxWidth="md" style={{ marginTop: 70 }}>
+                <h1 style={{textAlign: "center"}}>Favorites</h1>
                 <Cards campgrounds={this.state.campgrounds} />
-            </div>
+            </Container>
         )
     }
 }

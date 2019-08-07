@@ -51,11 +51,10 @@ label.MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLab
     max-width: 300px;
     padding: 50px 0 30px 0;
 }
-
-/* .MuiLinearProgress-colorSecondary {
+ /* .MuiLinearProgress-colorSecondary {
     background-color: rgb(0, 0, 0) !important;
-}
+} */
 
 .MuiLinearProgress-barColorSecondary {
     background-color: rgb(198, 61, 30) !important;
-} */
+} 

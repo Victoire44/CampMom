@@ -20,6 +20,12 @@ export default {
     getWeather: function (lat, lon, cnt) {
         return axios.get(`api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=${cnt}`)
     },
+    getTrails: function (lat, lng) {
+        return axios.get(`https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lng}&maxDistance=10&key=200542336-9cc42e1d5b620d5f44636b1bd9dc58f3`)
+        .then(result => result.data);
+    },
+
+
 
 
     // Save Favorites
@@ -33,11 +39,16 @@ export default {
     },
     // Get the saved favorite from the database
     getFavorites: function () {
-        return axios.get("/api/favorites").then(favorites => {
-            const campgroundPromises = favorites.data.map(favorite => {
+        return axios.get("/api/favorites").then(result => result.data)
+    },
+    // Get the saved favorite enriched (name, description...) from NPS data
+    getFavoriteCampgrounds: function () {
+        return this.getFavorites().then(favorites => {
+            const campgroundPromises = favorites.map(favorite => {
                 return getCampgroundById(favorite.parkCode)
                     .then(result => result.data.find(campground => campground.id === favorite.campgroundId))
             });
+            //Go from array of promises to a promise of array of results
             return Promise.all(campgroundPromises)
         })
     }

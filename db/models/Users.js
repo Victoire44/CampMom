@@ -12,17 +12,13 @@ module.exports= function(sequelize, DataTypes) {
             type: DataTypes.UUID,
             allowNull: false
         },
-        password: {
+        trips: {
             type: DataTypes.STRING,
             allowNull: true
         },
-        trips: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
         invitedTo: {
             type: DataTypes.TEXT,
-            allowNull: false
+            allowNull: true
         },
         favs: {
             type: DataTypes.STRING,

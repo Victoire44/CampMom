@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const exampleRoutes = require("./favorites");
+const favoritesRoutes = require("./favorites");
 
-router.use("/favorites", exampleRoutes);
+router.use("/favorites", favoritesRoutes);
 
 module.exports = router;
