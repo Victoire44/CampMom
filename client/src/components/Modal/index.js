@@ -109,8 +109,8 @@ function MyModal(props) {
                                                 <div>
                                                     <h3> {trail.name}</h3>
                                                     <img src={trail.imgSmall} alt="trail"></img>
-                                                    <p> Difficulty: {trail.difficulty}</p>
-                                                    <p> Type: {trail.type}</p>
+                                                    <p> Distance: {trail.distance}</p>
+                                                    <p> Rating: {trail.stars}</p>
                                                     <p> Description: {trail.summary} </p>
 
                                                     <Button size="small" variant="contained" className={classes.button} buttonStyle={{ borderRadius: 25 }}
