@@ -65,7 +65,7 @@ function MapCard(props) {
     return (
         <div>
             {props.campgrounds.length === 0 ?
-                (<h1 className={classes.noResults}>Looks like there is no campground here</h1>
+                (<h1 className={classes.noResults}>-</h1>
                 ) : (
                     <Grid container justify="center" spacing={7}>
                         {props.campgrounds.map(campground => {
@@ -94,11 +94,13 @@ function MapCard(props) {
                                         </CardActionArea>
                                         <div style={{ flex: 1 }}></div>
                                         {console.log(favorites)}
-                                        <i className="material-icons" style={{cursor: "pointer"}} onClick={() => handleFavorite(campground.parkCode, campground.id)}>
-                                            {favorites.map(favorite => favorite.campgroundId).includes(campground.id) ? "star" : "star_border"}
-                                        </i>
-                                        <CardActions style={{ margin: "0 auto" }}>
+                                        <CardActions>
+
                                             <MyModal campground={campground} />
+                                            <i className="material-icons" style={{ cursor: "pointer", position: "absolute" }} onClick={() => handleFavorite(campground.parkCode, campground.id)}>
+                                                {favorites.map(favorite => favorite.campgroundId).includes(campground.id) ? "star" : "star_border"}
+                                            </i>
+
                                         </CardActions>
                                     </Card>
                                 </Grid>

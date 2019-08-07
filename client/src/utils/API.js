@@ -20,6 +20,12 @@ export default {
     getWeather: function (lat, lon, cnt) {
         return axios.get(`api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=${cnt}`)
     },
+    getTrails: function (lat, lng) {
+        return axios.get(`https://www.hikingproject.com/data/get-trails?lat=${lat}&lon=${lng}&maxDistance=10&key=200542336-9cc42e1d5b620d5f44636b1bd9dc58f3`)
+        .then(result => result.data);
+    },
+
+
 
 
     // Save Favorites
