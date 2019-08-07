@@ -10,9 +10,6 @@ import API from "../../utils/API";
 import "./style.css";
 
 const useStyles = makeStyles(theme => ({
-    root: {
-        padding: theme.spacing(8, 10),
-    },
     button: {
         background: "#9D2F16",
         color: "white",
@@ -21,11 +18,21 @@ const useStyles = makeStyles(theme => ({
         position: "absolute",
         overflow: "scroll",
         height: "100%",
-        display: "block"
+        display: "block",
+        padding: "20px"
+    },
+    title: {
+        textAlign: "center",
+        background: "#225c5e",
+        color: "white",
+        padding: "40px"
     },
     trailLink: {
         textDecoration: "none",
         color: "black",
+    },
+    container: {
+        padding: theme.spacing(4, 10),
     }
 }));
 
@@ -76,7 +83,7 @@ function MyModal(props) {
                 <Container maxWidth="md" className="modal">
                     <Paper className={classes.root}>
                         <div className="container">
-                            <Typography variant="h3" component="h3" style={{textAlign: "center", background: "#225c5e", color: "white", padding: "20px"}}>
+                            <Typography variant="h3" component="h3" className={classes.title}>
                                 {props.campground.name}
                             </Typography>
                             <br />
@@ -100,7 +107,6 @@ function MyModal(props) {
                                 {props.campground.weatheroverview}
                             </Typography>
                             <Typography style={{ textAlign: "center" }}>
-                                {/* we map each trail in the array trails  */}
                                 {trails.length === 0 ? (<div></div>
                                 ) : (
                                         <div>
@@ -108,7 +114,7 @@ function MyModal(props) {
                                             {trails.map(trail => (
                                                 <div>
                                                     <h3> {trail.name}</h3>
-                                                    <img src={trail.imgSmallMed} alt="trail"></img>
+                                                    {trail.imgSmall.length === 0 ? (<div></div>) : (<img src={trail.imgSmallMed} alt="trail"></img>)}
                                                     <p><strong>Rating:</strong> {trail.stars}</p>
                                                     <p><strong>Length:</strong> {trail.length}</p>
                                                     <p><strong>Description:</strong> {trail.summary}</p>
@@ -122,9 +128,6 @@ function MyModal(props) {
                                             ))}
                                         </div>
                                     )}
-                                {console.log(props.campground.name)}
-                                {console.log(trails)}
-
                             </Typography>
                         </div>
                     </Paper>
