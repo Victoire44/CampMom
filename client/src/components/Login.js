@@ -38,7 +38,7 @@ function Login(props) {
     };
     return (
         <div>
-            <Button color="inherit" onClick={handleOpen}>Login</Button>
+            <Button  color="inherit" onClick={handleOpen}>{props.isLoggedIn ? "Logout" : "Login"}</Button>
             <Modal
                 aria-labelledby="simple-modal-title"
                 aria-describedby="simple-modal-description"
@@ -48,7 +48,7 @@ function Login(props) {
             >
                 <div className={classes.paper}>
                     <h2 id="modal-title">Sign In</h2>
-                    <Form>
+                    <Form handleLogin ={props.handleLogin} >
 
                     </Form>
                 </div>

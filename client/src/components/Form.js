@@ -116,8 +116,9 @@ class Inputs extends React.Component {
             user,
             signOut,
             signInWithGoogle,
+            handleLogin,
         } = this.props;
-
+        var name = "";
 
         return (
             <div className={classes.container}>
@@ -139,16 +140,20 @@ class Inputs extends React.Component {
                 <Grid container spacing={3}>
                     <Grid item xs={12}  >
                         {
+                            user ? name = user.displayName : name = ""
+                        }
+                        {/* {
                             user
+                            
                                 ? <p>Hello, {user.displayName}</p>
                             : <p></p>
-                        }
+                        } */}
                     </Grid>
                     <Grid item xs={12} sm={3} >
                         {
                             user
-                                ? <button variant="contained" color="primary" className={classes.button} onClick={signOut}>Sign out</button>
-                                : < GoogleButton variant="contained" color="primary" className={classes.button} onClick={signInWithGoogle}></GoogleButton>
+                                ? <button variant="contained" color="primary" className={classes.button} onClick={() => {signOut(); handleLogin(name, false)}}>Sign out</button>
+                                : < GoogleButton variant="contained" color="primary" className={classes.button} onClick={() => {signInWithGoogle(); handleLogin(name, true)}}></GoogleButton>
                         }
                     </Grid>
                     {/* <Grid item xs={12} sm={6}>
