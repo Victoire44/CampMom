@@ -5,7 +5,7 @@ const apiKey = "AIzaSyBmSLZewBiOZn3GJAasNRzdzRYA_Bi4qyo"
 const googleMapsClient = require('@google/maps').createClient({ key: apiKey });
 
 const MapWithMarker = withScriptjs(withGoogleMap(props =>
-    <GoogleMap center={props.position} defaultZoom={11} >
+    <GoogleMap center={props.position} defaultZoom={10} >
         <Marker position={props.position} />
     </GoogleMap>
 ))
@@ -15,7 +15,7 @@ function Maps(props) {
 
     useEffect(() => {
         if (props.position === null) {
-            googleMapsClient.geocode({ address: props.name }, (err, response) => {
+            googleMapsClient.geocode({ address: `${props.parkCode}, ${props.name}` }, (err, response) => {
                 if (!err) {
                     setPosition(response.json.results[0].geometry.location)
                 } else {
@@ -25,7 +25,7 @@ function Maps(props) {
         } else {
             setPosition(props.position);
         }
-    }, [props.position, props.name])
+    }, [props.position, props.name, props.parkCode])
 
     return (
         <MapWithMarker

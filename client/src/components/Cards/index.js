@@ -66,8 +66,10 @@ function MapCard(props) {
                                 <Grid key={campground.id} item xs={12} md={4}>
                                     <Card className={classes.card}>
                                         <div style={{ height: 200 }}>
+                                            {console.log(campground)}
                                             <Maps
                                                 position={position}
+                                                parkCode={campground.parkCode}
                                                 name={campground.name}
                                             />
                                         </div>
