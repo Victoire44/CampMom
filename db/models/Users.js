@@ -20,10 +20,10 @@ module.exports= function(sequelize, DataTypes) {
             type: DataTypes.TEXT,
             allowNull: true
         },
-        favs: {
-            type: DataTypes.STRING,
-            allowNull: true
-        }
+        // favs: {
+        //     type: DataTypes.STRING,
+        //     allowNull: true
+        // }
     });
     User.associate = function(models) {
 
