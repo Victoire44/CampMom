@@ -17,12 +17,18 @@ class App extends Component {
     campgrounds: [],
     loading: false,
     name: "",
-    isLoggedIn: false
+    isLoggedIn: false,
 
   }
-  handleLogin = (name,isLoggedIn) =>
-  this.setState({name:name,
-  isLoggedIn:isLoggedIn})
+  handleLogin = (name, isLogged) => {
+    this.setState({
+      isLoggedIn: isLogged,
+    }, () => {
+      this.setState({
+        name: name
+      })
+    })
+  }
 
   handleCampgrounds = campgrounds =>
     this.setState({ campgrounds: campgrounds })
@@ -34,7 +40,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Navbar handleLogin ={this.handleLogin} />
+          <Navbar isLoggedIn={this.state.isLoggedIn} handleLogin={this.handleLogin} />
           <Header handleCampgrounds={this.handleCampgrounds} handleLoading={this.handleLoading} />
           <Wrapper>
             <Route path="/" render={props => <Home {...props} campgrounds={this.state.campgrounds} loading={this.state.loading} />} />

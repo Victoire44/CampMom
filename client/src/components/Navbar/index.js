@@ -60,7 +60,7 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-function Navbar() {
+function Navbar(props) {
     const theme = useTheme();
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
@@ -83,7 +83,7 @@ function Navbar() {
                         <Typography variant="h6" className={classes.title}>
                             Camp.Mom
                         </Typography>
-                        <Login />
+                        <Login isLoggedIn={props.isLoggedIn} handleLogin ={props.handleLogin} />
                     </Toolbar>
                 </AppBar>
                 <Drawer
