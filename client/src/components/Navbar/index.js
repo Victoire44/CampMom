@@ -1,13 +1,20 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
+import Drawer from '@material-ui/core/Drawer';
+import Divider from '@material-ui/core/Divider';
+import List from '@material-ui/core/List';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ListItem from '@material-ui/core/ListItem';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Modal from '@material-ui/core/Modal';
-import Form from '../Form'
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import Login from '../Login';
+import Link from '@material-ui/core/Link';
+
+const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
     toolbar: {
@@ -16,75 +23,97 @@ const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
     },
+    appBar: {
+        transition: theme.transitions.create(['margin', 'width'], {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+        }),
+    },
+    appBarShift: {
+        width: `calc(100% - ${drawerWidth}px)`,
+        marginLeft: drawerWidth,
+        transition: theme.transitions.create(['margin', 'width'], {
+            easing: theme.transitions.easing.easeOut,
+            duration: theme.transitions.duration.enteringScreen,
+        }),
+    },
     menuButton: {
         marginRight: theme.spacing(2),
+    },
+    drawer: {
+        width: drawerWidth,
+        flexShrink: 0,
+    },
+    drawerPaper: {
+        width: drawerWidth,
+    },
+    drawerHeader: {
+        display: 'flex',
+        alignItems: 'center',
+        padding: '0 8px',
+        ...theme.mixins.toolbar,
+        justifyContent: 'flex-end',
     },
     title: {
         flexGrow: 1,
     },
-    paper: {
-        width: 400,
-        backgroundColor: theme.palette.background.paper,
-        boxShadow: theme.shadows[5],
-        padding: theme.spacing(2, 4, 4),
-        outline: 'none',
-        border: 'none',
-        position: 'absolute',
-        top: "35%",
-        left: "35%",
-    },
-    modal: {
-        position: "absolute",
-        overflow: "scroll",
-        height: "100%",
-        display: "block"
-    }
+
 }));
 
 function Navbar() {
+    const theme = useTheme();
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
-    const handleOpen = () => {
+    function handleDrawerOpen() {
         setOpen(true);
-    };
+    }
 
-    const handleClose = () => {
+    function handleDrawerClose() {
         setOpen(false);
-    };
-
+    }
 
     return (
         <div>
             <div className={classes.root}>
                 <AppBar position="static">
                     <Toolbar className={classes.toolbar}>
-                        <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                        <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={handleDrawerOpen}>
                             <MenuIcon />
                         </IconButton>
                         <Typography variant="h6" className={classes.title}>
                             Camp.Mom
                         </Typography>
-                        <Button color="inherit" onClick={handleOpen}>Login</Button>
+                        <Login />
                     </Toolbar>
                 </AppBar>
+                <Drawer
+                    className={classes.drawer}
+                    variant="persistent"
+                    anchor="left"
+                    open={open}
+                    classes={{
+                        paper: classes.drawerPaper,
+                    }}
+                >
+                    <div className={classes.drawerHeader}>
+                        <IconButton onClick={handleDrawerClose}>
+                            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+                        </IconButton>
+                    </div>
+                    <Divider />
+                    <List>
+                        <ListItem button key="Home">
+                            <Link href="/">Home</Link>
+                        </ListItem>
+                        <ListItem button key="Favorites">
+                            <Link href="/favorites">Favorites</Link>
+                        </ListItem>
+                        <ListItem button key="Trips">
+                            <Link href="/trips">Trips</Link>
+                        </ListItem>  
+                    </List>
+                </Drawer>
             </div>
-            <Modal
-                aria-labelledby="simple-modal-title"
-                aria-describedby="simple-modal-description"
-                open={open}
-                onClose={handleClose}
-                className={classes.modal}
-            >
-                <div className={classes.paper}>
-                    <h2 id="modal-title">Sign In</h2>
-
-                    <Form>
-
-                    </Form>
-
-
-                </div>
-            </Modal>
         </div>
     );
 }
