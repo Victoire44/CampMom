@@ -11,16 +11,18 @@ class Favorites extends React.Component {
     componentDidMount = () => {
         API.getFavoriteCampgrounds().then(campgrounds => {
             console.log(campgrounds)
-            this.setState({campgrounds: campgrounds})
+            this.setState({ campgrounds: campgrounds })
         })
     }
 
     render() {
         return (
+            <div>
+            <h1 style={{ textAlign: "center", fontFamily: "Red Hat Display, sans-serif" }}>My favorites</h1>
             <Container maxWidth="md" style={{ marginTop: 70 }}>
-                <h1 style={{textAlign: "center"}}>Favorites</h1>
                 <Cards campgrounds={this.state.campgrounds} />
             </Container>
+            </div>
         )
     }
 }

@@ -55,9 +55,6 @@ function MapCard(props) {
 
     return (
         <div>
-            {props.campgrounds.length === 0 ?
-                (<h1 className={classes.noResults}>-</h1>
-                ) : (
                     <Grid container justify="center" spacing={7}>
                         {props.campgrounds.map(campground => {
                             var latLongString = campground.latLong;
@@ -71,8 +68,7 @@ function MapCard(props) {
                                         <div style={{ height: 200 }}>
                                             <Maps
                                                 position={position}
-                                                containerElement={<div style={{ height: `100%`, width: `100%` }} />}
-                                                mapElement={<div style={{ height: `100%` }} />}
+                                                name={campground.name}
                                             />
                                         </div>
                                         <CardActionArea>
@@ -83,21 +79,17 @@ function MapCard(props) {
                                             </CardContent>
                                         </CardActionArea>
                                         <div style={{ flex: 1 }}></div>
-                                        {console.log(favorites)}
                                         <CardActions>
-
                                             <MyModal campground={campground} />
                                             <i className="material-icons" style={{ cursor: "pointer", position: "absolute", color: "#ffc000", fontSize: "33px" }} onClick={() => handleFavorite(campground.parkCode, campground.id)}>
                                                 {favorites.map(favorite => favorite.campgroundId).includes(campground.id) ? "star" : "star_border"}
                                             </i>
-
                                         </CardActions>
                                     </Card>
                                 </Grid>
                             )
                         })}
                     </Grid>
-                )}
         </div>
     );
 }

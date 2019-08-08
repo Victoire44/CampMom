@@ -114,7 +114,7 @@ function MyModal(props) {
                                             {trails.map(trail => (
                                                 <div>
                                                     <h3> {trail.name}</h3>
-                                                    {trail.imgSmall.length === 0 ? (<div></div>) : (<img src={trail.imgSmallMed} alt="trail"></img>)}
+                                                    {trail.imgSmallMed.length === 0 ? (<div></div>) : (<img src={trail.imgSmallMed} alt="trail"></img>)}
                                                     <p><strong>Rating:</strong> {trail.stars}</p>
                                                     <p><strong>Length:</strong> {trail.length}</p>
                                                     <p><strong>Description:</strong> {trail.summary}</p>
