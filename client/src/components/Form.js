@@ -54,14 +54,15 @@ firebaseAppAuth.onAuthStateChanged(function (user) {
             email: user.email,
             uuid: user.uid
         }).then(function (data, status) {
-            // alert("Data: " + data + "\nStatus: " + status);
+            if (user.emailVerified === true) {
+                // this.setState({
+                //     isLoggedIn: true
+                // })
+                console.log(this.isLoggedIn)
+            }
+                // alert("Data: " + data + "\nStatus: " + status);
         });
     
-        if (user.emailVerified) {
-            this.setState({
-                isLoggedIn: true
-            })
-        }
 
       // access logged in user's data
     //   database.ref("/" + user.uid).once("value").then(function (snapshot) {
