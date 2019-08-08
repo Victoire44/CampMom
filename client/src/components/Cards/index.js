@@ -8,6 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Maps from '../Maps';
 import MyModal from "../Modal"
+import TripModal from "../TripModal"
 import API from '../../utils/API'
 
 const useStyles = makeStyles(theme => ({
@@ -55,43 +56,44 @@ function MapCard(props) {
 
     return (
         <div>
-                    <Grid container justify="center" spacing={7}>
-                        {props.campgrounds.map(campground => {
-                            var latLongString = campground.latLong;
-                            var regex = /[\d.-]+/g;
-                            var latLong = latLongString.match(regex);
-                            var position = latLong != null ? { lat: parseFloat(latLong[0]), lng: parseFloat(latLong[1]) } : null
+            <Grid container justify="center" spacing={7}>
+                {props.campgrounds.map(campground => {
+                    var latLongString = campground.latLong;
+                    var regex = /[\d.-]+/g;
+                    var latLong = latLongString.match(regex);
+                    var position = latLong != null ? { lat: parseFloat(latLong[0]), lng: parseFloat(latLong[1]) } : null
 
-                            return (
-                                <Grid key={campground.id} item xs={12} md={4}>
-                                    <Card className={classes.card}>
-                                        <div style={{ height: 200 }}>
-                                            {console.log(campground)}
-                                            <Maps
-                                                position={position}
-                                                parkCode={campground.parkCode}
-                                                name={campground.name}
-                                            />
-                                        </div>
-                                        <CardActionArea>
-                                            <CardContent >
-                                                <Typography gutterBottom variant="h5" component="h2" className={classes.title}>
-                                                    {campground.name}
-                                                </Typography>
-                                            </CardContent>
-                                        </CardActionArea>
-                                        <div style={{ flex: 1 }}></div>
-                                        <CardActions>
-                                            <MyModal campground={campground} />
-                                            <i className="material-icons" style={{ cursor: "pointer", position: "absolute", color: "#ffc000", fontSize: "33px" }} onClick={() => handleFavorite(campground.parkCode, campground.id)}>
-                                                {favorites.map(favorite => favorite.campgroundId).includes(campground.id) ? "star" : "star_border"}
-                                            </i>
-                                        </CardActions>
-                                    </Card>
-                                </Grid>
-                            )
-                        })}
-                    </Grid>
+                    return (
+                        <Grid key={campground.id} item xs={12} md={4}>
+                            <Card className={classes.card}>
+                                <div style={{ height: 200 }}>
+                                    {console.log(campground)}
+                                    <Maps
+                                        position={position}
+                                        parkCode={campground.parkCode}
+                                        name={campground.name}
+                                    />
+                                </div>
+                                <CardActionArea>
+                                    <CardContent >
+                                        <Typography gutterBottom variant="h5" component="h2" className={classes.title}>
+                                            {campground.name}
+                                        </Typography>
+                                    </CardContent>
+                                </CardActionArea>
+                                <div style={{ flex: 1 }}></div>
+                                <CardActions style={{ textAlign: "center" }}>
+                                    <i className="material-icons" style={{ cursor: "pointer", color: "#ffc000", fontSize: "33px" }} onClick={() => handleFavorite(campground.parkCode, campground.id)}>
+                                        {favorites.map(favorite => favorite.campgroundId).includes(campground.id) ? "star" : "star_border"}
+                                    </i>
+                                    <MyModal campground={campground} />
+                                    <TripModal />
+                                </CardActions>
+                            </Card>
+                        </Grid>
+                    )
+                })}
+            </Grid>
         </div>
     );
 }
