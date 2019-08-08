@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
         color: "black",
     },
     container: {
-        padding: theme.spacing(4, 10),
+        padding: theme.spacing(4, 8),
     }
 }));
 
@@ -87,48 +87,50 @@ function MyModal(props) {
                                 {props.campground.name}
                             </Typography>
                             <br />
-                            <Typography component="p" style={{textAlign: "justify"}}>
-                                {props.campground.description}
-                            </Typography>
-                            <br />
-                            <Typography component="p">
-                                {props.campground.directionsoverview}
-                            </Typography>
-                            <br />
-                            <Typography component="p">
-                                {props.campground.accessibility.adainfo}
-                            </Typography>
-                            <br />
-                            <Typography component="p">
-                                {props.campground.accessibility.firestovepolicy}
-                            </Typography>
-                            <br />
-                            <Typography component="p">
-                                {props.campground.weatheroverview}
-                            </Typography>
-                            <Typography style={{ textAlign: "center" }}>
-                                {trails.length === 0 ? (<div></div>
-                                ) : (
-                                        <div>
-                                            <h2>Trails</h2>
-                                            {trails.map(trail => (
-                                                <div>
-                                                    <h3> {trail.name}</h3>
-                                                    {trail.imgSmallMed.length === 0 ? (<div></div>) : (<img src={trail.imgSmallMed} alt="trail"></img>)}
-                                                    <p><strong>Rating:</strong> {trail.stars}</p>
-                                                    <p><strong>Length:</strong> {trail.length}</p>
-                                                    <p><strong>Description:</strong> {trail.summary}</p>
+                            <div className={classes.container}>
+                                <Typography component="p" style={{ textAlign: "justify" }}>
+                                    {props.campground.description}
+                                </Typography>
+                                <br />
+                                <Typography component="p">
+                                    {props.campground.directionsoverview}
+                                </Typography>
+                                <br />
+                                <Typography component="p">
+                                    {props.campground.accessibility.adainfo}
+                                </Typography>
+                                <br />
+                                <Typography component="p">
+                                    {props.campground.accessibility.firestovepolicy}
+                                </Typography>
+                                <br />
+                                <Typography component="p">
+                                    {props.campground.weatheroverview}
+                                </Typography>
+                                <Typography style={{ textAlign: "center" }}>
+                                    {trails.length === 0 ? (<div></div>
+                                    ) : (
+                                            <div>
+                                                <h2>Trails</h2>
+                                                {trails.map(trail => (
+                                                    <div>
+                                                        <h3> {trail.name}</h3>
+                                                        {trail.imgSmallMed.length === 0 ? (<div></div>) : (<img src={trail.imgSmallMed} alt="trail"></img>)}
+                                                        <p><strong>Rating:</strong> {trail.stars}</p>
+                                                        <p><strong>Length:</strong> {trail.length}</p>
+                                                        <p><strong>Description:</strong> {trail.summary}</p>
 
-                                                    <Button size="small" variant="contained" className={classes.button} buttonStyle={{ borderRadius: 25 }}
-                                                        style={{ borderRadius: 25 }}><a className={classes.trailLink} href={trail.url} target="_blank" rel="noopener noreferrer" style={{color: "white"}}> Learn More </a>
-                                                    </Button>
-                                                    <hr></hr>
-                                                    <br></br>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    )}
-                            </Typography>
+                                                        <Button size="small" variant="contained" className={classes.button} buttonStyle={{ borderRadius: 25 }}
+                                                            style={{ borderRadius: 25 }}><a className={classes.trailLink} href={trail.url} target="_blank" rel="noopener noreferrer" style={{ color: "white" }}> Learn More </a>
+                                                        </Button>
+                                                        <hr></hr>
+                                                        <br></br>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
+                                </Typography>
+                            </div>
                         </div>
                     </Paper>
                 </Container>
