@@ -22,6 +22,7 @@ const useStyles = makeStyles(theme => ({
         position: 'absolute',
         top: "35%",
         left: "35%",
+        fontFamily: "Red Hat Display, sans-serif"
     },
 }));
 
