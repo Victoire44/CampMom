@@ -41,7 +41,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <div id="app">
           <Navbar isLoggedIn={this.state.isLoggedIn} handleLogin={this.handleLogin} />
           <Header handleCampgrounds={this.handleCampgrounds} handleLoading={this.handleLoading} />
           <Wrapper>

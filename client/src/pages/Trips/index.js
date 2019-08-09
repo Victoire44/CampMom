@@ -10,6 +10,7 @@ import ImageIcon from '@material-ui/icons/Image';
 import Divider from '@material-ui/core/Divider';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Maps from '../../components/Maps';
 import "./style.css";
 
 
@@ -19,10 +20,10 @@ class Trips extends React.Component {
         date: "",
         members: [],
         posts: [
-            "Gabriel,Does anyone have an extra tent? I can't find mine..",
-            "Derek,I think Shiv might have an extra.",
-            "Shiv,Yea I got you covered bro, literally. LOL",
-            "Victoire,I don't get it."
+            "Gabriel Jacobs,Does anyone have an extra tent? I can't find mine.",
+            "Derek Goldman,I think Shiv might have an extra.",
+            "Raghav Shiv,Yea I got you covered bro.. literally. LOL",
+            "Victoire Baron,I don't get it."
         ],
         input: ""
     }
@@ -33,16 +34,27 @@ class Trips extends React.Component {
 
     handleMsg = () => {
         var msg = JSON.parse(localStorage.getItem('name')) + "," + this.state.input;
-        this.setState({ 
+        this.setState({
             posts: [...this.state.posts, msg],
             input: "",
         })
     }
 
     render() {
+        var position = { lat: 37.736247, lng:  -119.563812};
+
         return (
             <div>
-                <h1 style={{ textAlign: "center", fontFamily: "Red Hat Display, sans-serif" }}>My Trip</h1>
+                <h1 style={{ textAlign: "center", fontFamily: "Red Hat Display, sans-serif" }}>Yosemite - Upper Pines - September, 8, 2019</h1>
+                <Container maxWidth="md" style={{ marginTop: 70 }}>
+                <p>The Upper Pines Campground is located in breathtaking Yosemite National Park in Central California's rugged Sierra Nevada Mountain Range. The campground is 25 miles from Yosemite Valley at an elevation of 4,875 feet. Within Yosemite, visitors can gaze upon waterfalls, sheer granite cliffs, deep valleys, grand meadows, ancient giant sequoias, vast wilderness areas and much more.</p>
+                <div style={{ height: 400, }}>
+                    <Maps
+                        position={position}
+                    />
+                </div>
+                </Container>
+
                 <Container maxWidth="md" style={{ marginTop: 70 }}>
                     <List>
                         {
@@ -73,8 +85,8 @@ class Trips extends React.Component {
                         onChange={this.handleChange}
                         value={this.state.input}
                     />
-                    <Button size="small" variant="contained" buttonStyle={{ borderRadius: 25 }}
-                        style={{ borderRadius: 25, background: "#9D2F16"}}><a onClick={this.handleMsg} rel="noopener noreferrer" style={{ color: "white" }}> Send </a>
+                    <Button onClick={this.handleMsg} size="small" variant="contained" buttonstyle={{ borderRadius: 25 }}
+                        style={{ borderRadius: 25, background: "#9D2F16", color: "white" }}>Send
                     </Button>
                 </Container>
             </div>

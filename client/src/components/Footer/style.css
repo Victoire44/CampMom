@@ -1,24 +1,32 @@
 .footer {
     min-height: 100px;
-    position: relative;
-    left: 0;
-    bottom: -100px;
+    /* position: relative; */
+    /* left: 0; */
+    /* bottom: -100px; */
     width: 100%;
     background-color: #225c5e;
     color: white;
     text-align: center;
+    /* flex-shrink: 0; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 100px;
+    align-self: flex-end;
 }
 
 .footer #logo {
   width: 100px;
-  padding-top: 10px;
+  padding: 10px;
+  text-align: center;
+  align-self: center;
 }
   
   .footer span {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    /* bottom: 0; */
+    /* left: 0; */
+    width: 100%;
+    /* right: 0; */
     padding: 3px;
     background-color: #2d5959;
     filter: brightness(75%);
