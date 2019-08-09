@@ -15,7 +15,19 @@ class App extends Component {
 
   state = {
     campgrounds: [],
-    loading: false
+    loading: false,
+    name: "",
+    isLoggedIn: false,
+
+  }
+  handleLogin = (name, isLogged) => {
+    this.setState({
+      isLoggedIn: isLogged,
+    }, () => {
+      this.setState({
+        name: name
+      })
+    })
   }
 
   handleCampgrounds = campgrounds =>
@@ -28,7 +40,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Navbar />
+          <Navbar isLoggedIn={this.state.isLoggedIn} handleLogin={this.handleLogin} />
           <Header handleCampgrounds={this.handleCampgrounds} handleLoading={this.handleLoading} />
           <Wrapper>
             <Route path="/" render={props => <Home {...props} campgrounds={this.state.campgrounds} loading={this.state.loading} />} />

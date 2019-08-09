@@ -10,6 +10,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import firebaseConfig from '../firebaseConfig';
 import Axios from 'axios';
+import GoogleButton from 'react-google-button'
 // import withStyles
 // var $ = require("jQuery")
 
@@ -41,46 +42,50 @@ firebaseAppAuth.onAuthStateChanged(function (user) {
     // If there's a user logged in:
     if (user) {
 
-      // log user info to the console
-      console.log("user is signed in!");
-      console.log("USER: ", user);  
-      console.log (user.displayName)
-      console.log (user.email)
-      console.log(user.uid)
+        // log user info to the console
+        console.log("user is signed in!");
+        console.log("USER: ", user);
+        console.log(user.displayName)
+        console.log(user.email)
+        console.log(user.uid)
 
-      Axios.post("/api/createusers",
-        {
-            name: user.displayName,
-            email: user.email,
-            uuid: user.uid
-        }).then(function (data, status) {
-            if (user.emailVerified === true) {
-                // this.setState({
-                //     isLoggedIn: true
-                // })
-                console.log(this.isLoggedIn)
-            }
+        Axios.post("/api/createusers",
+            {
+                name: user.displayName,
+                email: user.email,
+                uuid: user.uid
+            }).then(function (data, status) {
+                console.log("HIIIIIIIIII")
+                if (user.emailVerified) {
+                    this.setState({
+                        isLoggedIn: true
+                    })
+                    console.log("HI YOU CAN SEE ME")
+                }
+                else {
+                    console.log("YOU CANNOT SEE ME")
+                }
                 // alert("Data: " + data + "\nStatus: " + status);
-        });
-    
+            });
 
-      // access logged in user's data
-    //   database.ref("/" + user.uid).once("value").then(function (snapshot) {
-    //     // log all user's info to console
+
+        // access logged in user's data
+        //   database.ref("/" + user.uid).once("value").then(function (snapshot) {
+        //     // log all user's info to console
         // console.log("User Authenticated Data from Firebase:", snapshot.val());
 
 
-     // Send the user data to SQL - for now, just send user id, email, AND DISPLAY NAME (if they're not in the SQL DB already)
+        // Send the user data to SQL - for now, just send user id, email, AND DISPLAY NAME (if they're not in the SQL DB already)
 
-    //   });
+        //   });
 
     } else {
-      // if no user logged in, then redirect them back to sign in page
-    //   window.location.href = "/React-FirebaseGoogle-Test";
+        // if no user logged in, then redirect them back to sign in page
+        //   window.location.href = "/React-FirebaseGoogle-Test";
 
-    console.log("User not signed in")
+        console.log("User not signed in")
     }
-  });
+});
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -95,7 +100,9 @@ const useStyles = makeStyles(theme => ({
 
 class Inputs extends React.Component {
 
-    state = {}
+    state = {
+        isLoggedIn:false
+    }
 
     componentDidMount() {
 
@@ -109,8 +116,9 @@ class Inputs extends React.Component {
             user,
             signOut,
             signInWithGoogle,
+            handleLogin,
         } = this.props;
-
+        var name = "";
 
         return (
             <div className={classes.container}>
@@ -130,17 +138,24 @@ class Inputs extends React.Component {
                     }}
                 /> */}
                 <Grid container spacing={3}>
-                    {
-                        user
-                            ? <p>Hello, {user.displayName}</p>
-                            : <p>Please sign in.</p>
-                    }
-                    <div className ="g-signin2" data-onsuccess="onSignIn"></div>
-                    {
-                        user
-                            ? <button variant="contained" color="primary" className={classes.button} onClick={signOut}>Sign out</button>
-                            : <button variant="contained" color="primary" className={classes.button} onClick={signInWithGoogle}>Sign in with Google</button>
-                    }
+                    <Grid item xs={12}  >
+                        {
+                            user ? name = user.displayName : name = ""
+                        }
+                        {/* {
+                            user
+                            
+                                ? <p>Hello, {user.displayName}</p>
+                            : <p></p>
+                        } */}
+                    </Grid>
+                    <Grid item xs={12} sm={3} >
+                        {
+                            user
+                                ? <button variant="contained" color="primary" className={classes.button} onClick={() => {signOut(); handleLogin(name, false)}}>Sign out</button>
+                                : < GoogleButton variant="contained" color="primary" className={classes.button} onClick={() => {signInWithGoogle(); handleLogin(name, true)}}></GoogleButton>
+                        }
+                    </Grid>
                     {/* <Grid item xs={12} sm={6}>
                         <Button id="sign-up" variant="contained" color="primary" className={classes.button}>
                             Sign Up

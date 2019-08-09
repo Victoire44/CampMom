@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from '@material-ui/core/Modal';
 import Form from './Form';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles(theme => ({
@@ -27,7 +27,6 @@ const useStyles = makeStyles(theme => ({
 
 
 function Login(props) {
-    const theme = useTheme();
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => {
@@ -39,7 +38,7 @@ function Login(props) {
     };
     return (
         <div>
-            <Button color="inherit" onClick={handleOpen}>Login</Button>
+            <Button  color="inherit" onClick={handleOpen}>{props.isLoggedIn ? "Logout" : "Login"}</Button>
             <Modal
                 aria-labelledby="simple-modal-title"
                 aria-describedby="simple-modal-description"
@@ -49,7 +48,7 @@ function Login(props) {
             >
                 <div className={classes.paper}>
                     <h2 id="modal-title">Sign In</h2>
-                    <Form>
+                    <Form handleLogin ={props.handleLogin} >
 
                     </Form>
                 </div>
