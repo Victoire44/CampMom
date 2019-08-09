@@ -73,8 +73,8 @@ class Trips extends React.Component {
                         onChange={this.handleChange}
                         value={this.state.input}
                     />
-                    <Button size="small" variant="contained" buttonStyle={{ borderRadius: 25 }}
-                        style={{ borderRadius: 25, background: "#9D2F16"}}><a onClick={this.handleMsg} rel="noopener noreferrer" style={{ color: "white" }}> Send </a>
+                    <Button  onClick={this.handleMsg} size="small" variant="contained" buttonstyle={{ borderRadius: 25 }}
+                        style={{ borderRadius: 25, background: "#9D2F16", color: "white"}}>Send
                     </Button>
                 </Container>
             </div>
