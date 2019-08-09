@@ -43,6 +43,8 @@ const useStyles = makeStyles(theme => ({
     drawer: {
         width: drawerWidth,
         flexShrink: 0,
+        fontFamily: "Red Hat Display, sans-serif",
+        fontSize: "22px",
     },
     drawerPaper: {
         width: drawerWidth,
@@ -56,7 +58,7 @@ const useStyles = makeStyles(theme => ({
     },
     title: {
         flexGrow: 1,
-    },
+    }
 
 }));
 
@@ -81,9 +83,9 @@ function Navbar(props) {
                             <MenuIcon />
                         </IconButton>
                         <Typography variant="h6" className={classes.title}>
-                            Camp.Mom
+                            <a style={{ color: "white", textDecoration: "none" }} href="/">Camp.Mom</a>
                         </Typography>
-                        <Login isLoggedIn={props.isLoggedIn} handleLogin ={props.handleLogin} />
+                        <Login isLoggedIn={props.isLoggedIn} handleLogin={props.handleLogin} />
                     </Toolbar>
                 </AppBar>
                 <Drawer
@@ -103,14 +105,14 @@ function Navbar(props) {
                     <Divider />
                     <List>
                         <ListItem button key="Home">
-                            <Link href="/">Home</Link>
+                            <Link href="/" style={{ textDecoration: "none", color: "black" }}>Home</Link>
                         </ListItem>
                         <ListItem button key="Favorites">
-                            <Link href="/favorites">Favorites</Link>
+                            <Link href="/favorites" style={{ textDecoration: "none", color: "black" }}>Favorites</Link>
                         </ListItem>
                         <ListItem button key="Trips">
-                            <Link href="/trips">Trips</Link>
-                        </ListItem>  
+                            <Link href="/trips" style={{ textDecoration: "none", color: "black" }}>Trips</Link>
+                        </ListItem>
                     </List>
                 </Drawer>
             </div>

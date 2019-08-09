@@ -105,7 +105,7 @@ function MyModal(props) {
                                 </Typography>
                                 <br />
                                 <Typography component="p">
-                                    {props.campground.weatheroverview}
+                                    <strong> Weather: </strong> {props.campground.weatheroverview}
                                 </Typography>
                                 <Typography style={{ textAlign: "center" }}>
                                     {trails.length === 0 ? (<div></div>
