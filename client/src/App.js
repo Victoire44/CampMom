@@ -27,6 +27,8 @@ class App extends Component {
       this.setState({
         name: name
       })
+      localStorage.setItem('name',
+      JSON.stringify(this.state.name));
     })
   }
 
@@ -45,7 +47,7 @@ class App extends Component {
           <Wrapper>
             <Route path="/" render={props => <Home {...props} campgrounds={this.state.campgrounds} loading={this.state.loading} />} />
             <Route path="/favorites" component={Favorites} />
-            <Route path="/trips" component={Trips} />
+            <Route path="/trips" component={Trips}  />
             {/* <Route path="/noMatch" component={NoMatch} /> */}
           </Wrapper>
           <Footer />

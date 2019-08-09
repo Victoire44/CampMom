@@ -1,0 +1,20 @@
+.postIn {
+    width: 100%;
+    /* background: rgba(0, 0, 0, 0.75); */
+    /* border-radius: 15px; */
+}
+
+input#filled-with-placeholder {
+    color: black;
+}
+.postIn label.MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated.MuiInputLabel-filled {
+    color:#225c5e;
+}
+
+.postIn .MuiFilledInput-underline:before {
+    border-color: #225c5e;
+}
+
+.postIn .MuiFilledInput-underline:after {
+    border-color: #225c5e;
+}
