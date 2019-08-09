@@ -54,7 +54,7 @@ function TripModal(props) {
     });
 
     return (
-        <div style={{ margin: "0 auto" }}>
+        <div>
             <i class="material-icons" onClick={handleOpen} style={{ cursor: "pointer", fontSize: "33px", color: "#225c5e" }}>add_circle_outline</i>
 
             <Modal className={classes.modal}
