@@ -43,7 +43,7 @@ class Favorites extends React.Component {
                             <Cards campgrounds={this.state.campgrounds} />
                     }
                 </Container>
-            </div >
+            </div>
         )
     }
 }
