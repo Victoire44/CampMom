@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
+// import Navbar from "./components/Navbar";
 import Header from "./components/Header";
-import Wrapper from "./components/Wrapper";
+// import Wrapper from "./components/Wrapper";
 import Footer from "./components/Footer"
 
 // import NoMatch from "./pages/NoMatch";
-import Home from "./pages/Home";
-import Favorites from "./pages/Favorites";
-import Trips from "./pages/Trips";
+// import Home from "./pages/Home";
+// import Favorites from "./pages/Favorites";
+// import Trips from "./pages/Trips";
 
 
 class App extends Component {
@@ -42,14 +42,14 @@ class App extends Component {
     return (
       <Router>
         <div id="app">
-          <Navbar isLoggedIn={this.state.isLoggedIn} handleLogin={this.handleLogin} />
+          {/* <Navbar isLoggedIn={this.state.isLoggedIn} handleLogin={this.handleLogin} /> */}
           <Header handleCampgrounds={this.handleCampgrounds} handleLoading={this.handleLoading} />
-          <Wrapper>
-            <Route path="/" render={props => <Home {...props} campgrounds={this.state.campgrounds} loading={this.state.loading} />} />
-            <Route path="/favorites" component={Favorites} />
-            <Route path="/trips" component={Trips}  />
+          {/* <Wrapper> */}
+            {/* <Route path="/" render={props => <Home {...props} campgrounds={this.state.campgrounds} loading={this.state.loading} />} /> */}
+            {/* <Route path="/favorites" component={Favorites} /> */}
+            {/* <Route path="/trips" component={Trips}  /> */}
             {/* <Route path="/noMatch" component={NoMatch} /> */}
-          </Wrapper>
+          {/* </Wrapper> */}
           <Footer />
         </div>
       </Router>

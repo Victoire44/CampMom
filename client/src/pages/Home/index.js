@@ -1,7 +1,7 @@
 import React from "react";
 import Cards from "../../components/Cards"
-import Container from '@material-ui/core/Container';
-import LinearProgress from '@material-ui/core/LinearProgress';
+import Container from '@mui/material/Container';
+import LinearProgress from '@mui/material/LinearProgress';
 
 class Home extends React.Component {
 

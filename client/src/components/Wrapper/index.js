@@ -1,9 +1,9 @@
-import React from "react";
+// import React from "react";
 
-function Wrapper(props) {
-  return (
-    <main className="wrapper" {...props} />
-  );
-}
+// function Wrapper(props) {
+//   return (
+//     <main className="wrapper" {...props} />
+//   );
+// }
 
-export default Wrapper;
+// export default Wrapper;

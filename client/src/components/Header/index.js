@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Paper from '@material-ui/core/Paper';
+import Paper from '@mui/material/Paper';
 import SearchInput from '../SearchInput';
 import './style.css';
 import logo from '../Header/logo.png';
